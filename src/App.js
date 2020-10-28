@@ -3,20 +3,39 @@ import './App.css';
 
 const App = () => {
   return (
+    <div>
+      <Header/>
+      <Technologies/>
+    </div>
+  );
+}
+
+const Header = () => {
+  return (
+    <div>
+      <a href='#'>Home</a>
+      <a href='#'>Home</a>
+      <a href='#'>Home</a>
+    </div>
+  )
+}
+
+const Technologies = () => {
+  return (
     <div className="App">
       <ul>
         <li>
-          Start Way
+          Css
         </li>
         <li>
-          Common
+          HTML
         </li>
         <li>
-          Man
+          JS
         </li>
       </ul>
     </div>
-  );
+  )
 }
 
 export default App;
