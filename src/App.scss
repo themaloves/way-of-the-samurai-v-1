@@ -10,20 +10,12 @@
   margin: 0 auto;
 }
 
-.header {
-  grid-area: header;
-  background-color: #c6c6c6;
-}
-.header .header__link {
-  font-size: 12px;
-}
 
-.nav {
-  grid-area: nav;
-  background-color: #a1a1a1;
-}
 
 .content {
   grid-area: ctx;
   background-color: #666666;
 }
+
+@import 'styles/aside/aside';
+@import 'styles/nav/nav';

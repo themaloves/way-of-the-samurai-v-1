@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav className="nav__links">
+    <nav className="nav">
       <ul className="nav__items">
         <li className="nav__item">
           <a href="#">

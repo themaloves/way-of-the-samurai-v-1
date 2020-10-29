@@ -2,7 +2,7 @@ import Navbar from '../Nav/Nav';
 
 const Aside = () => {
   return (
-    <aside className="nav">
+    <aside className="menu">
       <Navbar/>
     </aside>
   )
