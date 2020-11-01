@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
-import Aside from './components/Aside/Aside';
 import Profile from './components/Profile/Profile';
+import Navbar from "./components/Nav/Nav";
 
 const App = () => {
   return (
-    <main className="wrapper">
+    <main className="wrap">
       <Header/>
-      <Aside/>
+      <Navbar/>
       <Profile/>
     </main>
   );

@@ -1,21 +1,7 @@
-.wrapper {
-  display: grid;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
-  grid-template-areas:
-  "header header"
-  "nav ctx";
-  width: 1200px;
-  margin: 0 auto;
-}
+@import 'styles/settings/vars';
+@import 'styles/settings/main';
+@import 'styles/settings/wrap';
 
-
-
-.content {
-  grid-area: ctx;
-  background-color: #666666;
-}
-
-@import 'styles/aside/aside';
+@import 'styles/header/header';
 @import 'styles/nav/nav';
+@import 'styles/profile/profile';
