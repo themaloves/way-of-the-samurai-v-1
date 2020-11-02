@@ -6,7 +6,15 @@
   &__items {
 
   }
-  &__item {
 
+  &__item {
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+
+    .link--active {
+      color: #ff0000;
+    }
   }
 }
