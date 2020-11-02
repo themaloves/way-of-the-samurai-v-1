@@ -1,3 +1,21 @@
 .dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  padding: 1px;
+  color: $white;
 
+  &__users {
+    padding: 10px;
+  }
+  &__user {
+    &--active {
+      color: #daa520;
+    }
+  }
+  &__messages {
+    padding: 10px;
+  }
+  &__message {
+
+  }
 }
