@@ -8,14 +8,20 @@
     padding: 10px;
   }
   &__user {
-    &--active {
-      color: #daa520;
-    }
+
   }
   &__messages {
     padding: 10px;
   }
   &__message {
 
+  }
+  &__link {
+    color: $white;
+    text-decoration: none;
+
+    &--active {
+      color: #daa520;
+    }
   }
 }

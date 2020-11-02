@@ -6,7 +6,10 @@ const DialogUser = (props) => {
 
   return (
     <li className="dialogs__user">
-      <NavLink to={path}>
+      <NavLink
+        to={path}
+        activeClassName="dialogs__link--active"
+        className="dialogs__link">
         {props.name}
       </NavLink>
     </li>
