@@ -3,7 +3,7 @@ import Posts from './Posts/Posts';
 
 const Profile = () => {
   return (
-    <section className="content">
+    <section className="profile">
       <div>
         <img src="https://www.donnashape.com/33840-medium_default/hot-girl-body.jpg" alt="hot-girl"/>
       </div>

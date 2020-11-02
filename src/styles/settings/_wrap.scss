@@ -8,4 +8,9 @@
   "nav ctx";
   width: 1200px;
   margin: 0 auto;
+
+  &__content {
+    grid-area: ctx;
+    background-color: #666666;
+  }
 }
