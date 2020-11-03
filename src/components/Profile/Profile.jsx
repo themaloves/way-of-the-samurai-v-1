@@ -6,7 +6,7 @@ const Profile = (props) => {
   return (
     <section className="profile">
       <Info/>
-      <Posts posts={props.posts}/>
+      <Posts data={props.data.posts}/>
     </section>
   )
 }

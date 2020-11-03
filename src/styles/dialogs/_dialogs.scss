@@ -8,20 +8,60 @@
     padding: 10px;
   }
   &__user {
-
+    &:nth-child(n+2) {
+      margin-top: 5px;
+    }
   }
   &__messages {
     padding: 10px;
+    background-color: #a7a7a7;
+    margin: 10px;
   }
   &__message {
-
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: auto;
   }
   &__link {
     color: $white;
     text-decoration: none;
+    display: flex;
 
     &--active {
       color: #daa520;
     }
+  }
+  &__avatar {
+    height: 50px;
+    width: 50px;
+  }
+  &__img {
+    height: 100%;
+    width: 100%;
+  }
+  &__name {
+    margin: auto 10px;
+  }
+  &__sender,
+  &__recipient {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__sender {
+    grid-column: span 2;
+    width: 50%;
+    padding: 10px;
+    background-color: #142a6d;
+    border-radius: 10px;
+  }
+  &__recipient {
+    grid-column: 2;
+    padding: 10px;
+    background-color: #546b32;
+    border-radius: 10px;
+  }
+  &__user-name {
+
   }
 }

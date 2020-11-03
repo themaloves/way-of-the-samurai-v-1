@@ -3,11 +3,11 @@ import DialogUser from './DialogUser/DialogUser';
 import DialogMessage from './DialogMessage/DialogMessage';
 
 const Dialogs = (props) => {
-  let dialogsElements = props.usersDialog.map(d => {
-      return <DialogUser name={d.name} id={d.id}/>
+  let dialogsElements = props.data.usersDialog.map(d => {
+      return <DialogUser key={d.id} name={d.name} id={d.id} pathUrl={d.pathUrl}/>
     }),
-    messagesElements = props.messageDialog.map(m => {
-      return <DialogMessage message={m.message}/>
+    messagesElements = props.data.messageDialog.map(m => {
+      return <DialogMessage key={m.id} message={m.message}/>
     });
 
   return (

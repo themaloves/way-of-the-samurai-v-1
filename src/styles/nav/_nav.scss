@@ -8,13 +8,41 @@
   }
 
   &__item {
-    a {
-      color: $white;
-      text-decoration: none;
+    &:nth-child(n+2) {
+      margin-top: 5px;
     }
+  }
+  &__link {
+    color: $white;
+    text-decoration: none;
 
-    .link--active {
+    &--active {
       color: #ff0000;
     }
+  }
+  &__friends {
+    margin-top: 12px;
+    border-top: 1px solid;
+    padding-top: 10px;
+  }
+  &__img {
+    width: 30px;
+    height: 30px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__friend {
+    display: flex;
+
+    &:nth-child(n+2) {
+      margin-top: 8px;
+    }
+  }
+  &__full-name {
+    margin-left: 10px;
+    color: $white;
   }
 }

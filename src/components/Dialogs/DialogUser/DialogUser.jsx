@@ -10,7 +10,12 @@ const DialogUser = (props) => {
         to={path}
         activeClassName="dialogs__link--active"
         className="dialogs__link">
-        {props.name}
+        <div className="dialogs__avatar">
+          <img className="dialogs__img" src={props.pathUrl} alt="avatar"/>
+        </div>
+        <span className="dialogs__name">
+          {props.name}
+        </span>
       </NavLink>
     </li>
   )

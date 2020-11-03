@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post/Post'
 
 const Posts = (props) => {
-  let postsElements = props.posts.map(p => {
+  let postsElements = props.data.map(p => {
     return <Post message={p.message}/>
   });
 
