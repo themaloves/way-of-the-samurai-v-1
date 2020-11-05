@@ -1,7 +1,13 @@
 import React from 'react';
 
 const DialogMessage = (props) => {
-  console.log(props);
+  let newMessage = React.createRef();
+
+  const addMessage = () => {
+    let text = newMessage.current.value;
+    alert(text);
+  }
+
   let messageArray;
   if (typeof props.message === 'object') {
     messageArray = props.message.map(m => {
@@ -16,6 +22,14 @@ const DialogMessage = (props) => {
   return (
     <div className="dialogs__message">
       {messageArray}
+      <div>
+        <textarea ref={newMessage} name="new-message" cols="30" rows="10"></textarea>
+        <div>
+          <button onClick={addMessage}>
+            Отправить
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
