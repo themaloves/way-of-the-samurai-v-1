@@ -1,10 +1,13 @@
+import {rerenderEntireTree} from '../render';
+
 let state = {
   profile: {
     posts: [
       {id: 1, message: 'Hi, how are you?'},
       {id: 2, message: 'It\'s my first post'},
       {id: 3, message: 'Hi yo'}
-    ]
+    ],
+    newPostText: 'Введи сообщение'
   },
   dialogs: {
     usersDialog: [
@@ -110,3 +113,17 @@ let state = {
 }
 
 export default state;
+
+export let addPost = () => {
+  let newPost = {
+    id: 5,
+    message: state.profile.newPostText
+  };
+  state.profile.posts.push(newPost);
+    state.profile.newPostText = '';
+  rerenderEntireTree(state);
+},
+  updateNewPostText = newText => {
+    state.profile.newPostText = newText;
+    rerenderEntireTree(state);
+  }

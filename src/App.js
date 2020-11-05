@@ -16,7 +16,11 @@ const App = (props) => {
       <Navbar data={props.state.navigation}/>
       <div className="wrap__content">
         <Route path="/profile" render={() => {
-          return <Profile data={props.state.profile}/>
+          return <Profile
+            profile={props.state.profile}
+            addPost={props.addPost}
+            updateNewPostText={props.updateNewPostText}
+          />
         }}/>
         <Route path="/messages" render={() => {
           return <Dialogs data={props.state.dialogs}/>
