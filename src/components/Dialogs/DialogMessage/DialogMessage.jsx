@@ -4,11 +4,15 @@ const DialogMessage = (props) => {
   let newMessage = React.createRef();
 
   const addMessage = () => {
-    let text = newMessage.current.value;
-    alert(text);
-  }
+      let text = newMessage.current.value;
+      alert(text);
+    },
+    addNewMessage = () => {
 
-  let messageArray;
+    }
+
+    let
+  messageArray;
   if (typeof props.message === 'object') {
     messageArray = props.message.map(m => {
       return (
@@ -23,7 +27,7 @@ const DialogMessage = (props) => {
     <div className="dialogs__message">
       {messageArray}
       <div>
-        <textarea ref={newMessage} name="new-message" cols="30" rows="10"></textarea>
+        <textarea ref={newMessage} value={props}></textarea>
         <div>
           <button onClick={addMessage}>
             Отправить

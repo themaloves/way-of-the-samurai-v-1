@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from '../render';
+let rerenderEntireTree = () => {
+  console.log('State Changed');
+}
 
 let state = {
   profile: {
@@ -46,35 +48,40 @@ let state = {
           {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
         ]
       },
-      {id: 2, message: [
-          {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-          {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-          {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-          {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-        ]
-      },
-      {id: 3, message: [
-          {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-          {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-          {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-          {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-        ]
-      },
-      {id: 4, message: [
-          {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-          {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-          {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-          {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-        ]
-      },
-      {id: 5, message: [
-          {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-          {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-          {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-          {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-        ]
-      }
-    ]
+      // {
+      //   id: 2, message: [
+      //     {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
+      //     {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
+      //     {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
+      //     {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
+      //   ]
+      // },
+      // {
+      //   id: 3, message: [
+      //     {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
+      //     {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
+      //     {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
+      //     {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
+      //   ]
+      // },
+      // {
+      //   id: 4, message: [
+      //     {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
+      //     {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
+      //     {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
+      //     {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
+      //   ]
+      // },
+      // {
+      //   id: 5, message: [
+      //     {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
+      //     {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
+      //     {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
+      //     {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
+      //   ]
+      // }
+    ],
+    newMessage: 'Введите новое сообщение'
   },
   navigation: {
     friends: [
@@ -112,18 +119,22 @@ let state = {
   }
 }
 
-export default state;
-
-export let addPost = () => {
-  let newPost = {
-    id: 5,
-    message: state.profile.newPostText
-  };
-  state.profile.posts.push(newPost);
+export const addPost = () => {
+    let newPost = {
+      id: 5,
+      message: state.profile.newPostText
+    };
+    state.profile.posts.push(newPost);
     state.profile.newPostText = '';
-  rerenderEntireTree(state);
-},
+    rerenderEntireTree(state);
+  },
   updateNewPostText = newText => {
     state.profile.newPostText = newText;
     rerenderEntireTree(state);
+  },
+  subscribe = (observer) => {
+    rerenderEntireTree = observer;
   }
+
+
+export default state;
