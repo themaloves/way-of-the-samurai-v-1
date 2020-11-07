@@ -2,18 +2,20 @@ import React from 'react';
 import Post from './Post/Post'
 
 const Posts = (props) => {
-  let postsElements = props.data.map(p => {
+  let postsElements = props.data.posts.map(p => {
     return <Post message={p.message}/>
   });
 
   const
     newPostElement = React.createRef(),
     addPost = () => {
-      props.addPost()
+      let action = {type: 'ADD-POST'};
+      props.dispatch(action)
     },
     onPostChange = () => {
       let text = newPostElement.current.value;
-      props.updateNewPostText(text);
+      let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+      props.dispatch(action);
     }
 
   return (
@@ -21,7 +23,7 @@ const Posts = (props) => {
       <div>
         <textarea onChange={onPostChange}
                   ref={newPostElement}
-                  value={props.newPostText}/>
+                  value={props.data.newPostText}/>
       </div>
       <div>
         <button onClick={addPost}>Новый пост</button>

@@ -6,10 +6,8 @@ const Profile = (props) => {
   return (
     <section className="profile">
       <Info/>
-      <Posts data={props.profile.posts}
-             addPost={props.addPost}
-             newPostText={props.profile.newPostText}
-             updateNewPostText={props.updateNewPostText}
+      <Posts data={props.profile}
+             dispatch={props.dispatch}
       />
     </section>
   )
