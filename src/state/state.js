@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST',
-  UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+  UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
+  UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY',
+  SEND_MESSAGE = 'SEND_MESSAGE';
 
 let store = {
   _state: {
@@ -40,48 +42,9 @@ let store = {
         }
       ],
       messageDialog: [
-        {
-          id: 1, message: [
-            {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-            {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-            {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-            {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-          ]
-        },
-        {
-          id: 2, message: [
-            {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-            {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-            {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-            {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-          ]
-        },
-        {
-          id: 3, message: [
-            {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-            {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-            {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-            {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-          ]
-        },
-        {
-          id: 4, message: [
-            {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-            {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-            {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-            {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-          ]
-        },
-        {
-          id: 5, message: [
-            {id: 1, side: 'sender', userName: 'Viktor', message: 'Привет, как дела?'},
-            {id: 2, side: 'recipient', userName: 'Me', message: 'Отлично, как твои?'},
-            {id: 3, side: 'sender', userName: 'Viktor', message: 'Может увидемся?'},
-            {id: 4, side: 'recipient', userName: 'Me', message: 'Да, давай сегодня в 17:00! На нашем месте'}
-          ]
-        }
+        {id: 1, message: 'Hi'}
       ],
-      newMessage: 'Введите новое сообщение'
+      newMessageBody: ''
     },
     navigation: {
       friends: [
@@ -141,6 +104,16 @@ let store = {
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profile.newPostText = action.newText;
       this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this._state.dialogs.newMessageBody = action.body;
+      this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
+      let body = this._state.dialogs.newMessageBody;
+      this._state.dialogs.newMessageBody = '';
+      this._state.dialogs.messageDialog.push(
+        {id: 2, message: body}
+      );
+      this._callSubscriber(this._state);
     }
   }
 }
@@ -149,6 +122,10 @@ export const addPostActionCreator = () => ({type: ADD_POST}),
   updateNewPostTextActionCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text
+  }),
+  sendMessageActionCreator = () => ({type: SEND_MESSAGE}),
+  updateNewMessageBodyActionCreator = (body) => ({
+    type: UPDATE_NEW_MESSAGE_BODY, body: body
   })
 
 export default store;
