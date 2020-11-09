@@ -1,7 +1,7 @@
 import React from 'react';
 import DialogUser from './DialogUser/DialogUser';
 import DialogMessage from './DialogMessage/DialogMessage';
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from '../../state/state';
+import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from '../../state/dialogsReducer';
 
 const Dialogs = (props) => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from './Post/Post';
-import {updateNewPostTextActionCreator, addPostActionCreator} from '../../../state/state';
+import {updateNewPostTextActionCreator, addPostActionCreator} from '../../../state/profileReducer';
 
 const Posts = (props) => {
   let postsElements = props.data.posts.map(p => {
