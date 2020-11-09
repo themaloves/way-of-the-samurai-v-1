@@ -1,3 +1,7 @@
+import dialogsReducer from './dialogsReducer';
+import profileReducer from './profileReducer';
+import navigationReducer from './navigationReducer';
+
 const ADD_POST = 'ADD-POST',
   UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
   UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY',
@@ -93,28 +97,11 @@ let store = {
   },
 
   dispatch(action) {  // {type: 'ADD-POST'}
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.profile.newPostText
-      };
-      this._state.profile.posts.push(newPost);
-      this._state.profile.newPostText = '';
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profile.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogs.newMessageBody = action.body;
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let body = this._state.dialogs.newMessageBody;
-      this._state.dialogs.newMessageBody = '';
-      this._state.dialogs.messageDialog.push(
-        {id: 2, message: body}
-      );
-      this._callSubscriber(this._state);
-    }
+    this._state.profile = profileReducer(this._state.profile, action);
+    this._state.dialogs = dialogsReducer(this._state.dialogs, action);
+    this._state.navigation = navigationReducer(this._state.navigation, action);
+
+    this._callSubscriber(this._state);
   }
 }
 
