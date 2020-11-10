@@ -1,7 +1,6 @@
 import React from 'react';
 
 const BestFriends = (props) => {
-  console.log(props);
   let friendItem = props.data.friends.map((f) => {
     return (
       <li key={f.id} className="nav__friend">

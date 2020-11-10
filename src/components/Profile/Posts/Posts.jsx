@@ -1,21 +1,18 @@
 import React from 'react';
 import Post from './Post/Post';
-import {updateNewPostTextActionCreator, addPostActionCreator} from '../../../state/profileReducer';
 
 const Posts = (props) => {
-  let postsElements = props.data.posts.map(p => {
+  let postsElements = props.posts.map(p => {
     return <Post message={p.message}/>
   });
 
-  const
-    newPostElement = React.createRef(),
-    addPost = () => {
-      props.dispatch(addPostActionCreator())
+  const newPostElement = React.createRef(),
+    onAddPost = () => {
+      props.addPost();
     },
     onPostChange = () => {
       let text = newPostElement.current.value;
-      let action = updateNewPostTextActionCreator(text);
-      props.dispatch(action);
+      props.updateNewPostText(text);
     }
 
   return (
@@ -23,10 +20,10 @@ const Posts = (props) => {
       <div>
         <textarea onChange={onPostChange}
                   ref={newPostElement}
-                  value={props.data.newPostText}/>
+                  value={props.newPostText}/>
       </div>
       <div>
-        <button onClick={addPost}>Новый пост</button>
+        <button onClick={onAddPost}>Новый пост</button>
       </div>
       <h1 className="profile__headline">Мои посты</h1>
       {postsElements}

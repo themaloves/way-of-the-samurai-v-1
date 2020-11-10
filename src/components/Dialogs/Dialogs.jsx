@@ -1,11 +1,9 @@
 import React from 'react';
 import DialogUser from './DialogUser/DialogUser';
 import DialogMessage from './DialogMessage/DialogMessage';
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from '../../state/dialogsReducer';
 
 const Dialogs = (props) => {
-
-  let state = props.store.getState().dialogs;
+  let state = props.dialogs;
 
   let dialogsElements = state.usersDialog.map(d => {
       return <DialogUser key={d.id} name={d.name} id={d.id} pathUrl={d.pathUrl}/>
@@ -17,11 +15,11 @@ const Dialogs = (props) => {
 
 
   let onSendMessageClick = () => {
-      props.store.dispatch(sendMessageActionCreator());
+      props.sendMessage();
     },
     onNewMessageChange = (e) => {
       let body = e.target.value
-      props.store.dispatch(updateNewMessageBodyActionCreator(body));
+      props.updateNewMessageBody(body);
     }
 
   return (
