@@ -2,33 +2,33 @@ import React from 'react';
 import Axios from 'axios';
 import userPhoto from '../../assets/img/ava-default.jpg';
 
-const Users = (props) => {
-  let getUsers = () => {
-    if (props.users.length === 0) {
-      Axios.get('https://social-network.samuraijs.com/api/1.0/users')
-        .then(res => {
-          props.setUsers(res.data.items);
-        });
-    }
+class Users extends React.Component {
+  constructor(props) {
+    super(props);
+    Axios.get('https://social-network.samuraijs.com/api/1.0/users')
+      .then(res => {
+        this.props.setUsers(res.data.items);
+      });
   }
 
-  return (
-    <section>
-      <button onClick={getUsers}>Get Users</button>
-      {
-        props.users.map(u => <div className="users" key={u.id}>
+  render() {
+    return (
+      <section>
+        {
+          this.props.users.map(u => <div className="users" key={u.id}>
         <span>
           <div>
             <img className="users__img" src={u.photos.small !== null ? u.photos.small : userPhoto} alt="ava"/>
           </div>
           <div>
             {
-              u.followed ? <button onClick={() => {props.unfollow(u.id)}}>Unfollow</button> :
-              <button onClick={() => {props.follow(u.id)}}>Follow</button>
+              u.followed
+                ? <button onClick={() => {this.props.unfollow(u.id)}}>Unfollow</button>
+                : <button onClick={() => {this.props.follow(u.id)}}>Follow</button>
             }
           </div>
         </span>
-          <span>
+            <span>
             <div>
               {u.name}
             </div>
@@ -36,7 +36,7 @@ const Users = (props) => {
               {u.status}
             </div>
           </span>
-          <span>
+            <span>
             <div>
               {"u.location.country"}
             </div>
@@ -44,10 +44,11 @@ const Users = (props) => {
               {"u.location.city"}
             </div>
           </span>
-        </div>)
-      }
-    </section>
-  )
+          </div>)
+        }
+      </section>
+    )
+  }
 }
 
 export default Users;
