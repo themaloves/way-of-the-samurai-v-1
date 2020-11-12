@@ -3,4 +3,16 @@
     width: 100px;
     height: 100px;
   }
+  &__button-page {
+    padding: 10px;
+
+    &:nth-child(n+2) {
+      margin-left: 10px;
+    }
+
+    &--active {
+      background-color: $red;
+      color: $white;
+    }
+  }
 }
