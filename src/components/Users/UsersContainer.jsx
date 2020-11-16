@@ -15,7 +15,9 @@ import Preloader from '../common/Preloader/Preloader';
 class UsersComponent extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+    Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+      withCredentials: true
+    })
       .then(res => {
         this.props.toggleIsFetching(false);
         this.props.setUsers(res.data.items);
@@ -26,7 +28,9 @@ class UsersComponent extends React.Component {
   onPageChanged = (p) => {
     this.props.setCurrentPage(p);
     this.props.toggleIsFetching(true);
-    Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
+    Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`, {
+      withCredentials: true
+    })
       .then(res => {
         this.props.toggleIsFetching(false);
         this.props.setUsers(res.data.items);
