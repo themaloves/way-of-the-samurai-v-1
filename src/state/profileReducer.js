@@ -1,3 +1,5 @@
+import {usersAPI} from '../api/api';
+
 const ADD_POST = 'ADD-POST',
   UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
   SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -19,7 +21,7 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         newPostText: '',
-        posts: [...state.posts, { id: 5, message: text}]
+        posts: [...state.posts, {id: 5, message: text}]
       };
     }
     case UPDATE_NEW_POST_TEXT: {
@@ -29,10 +31,10 @@ const profileReducer = (state = initialState, action) => {
       };
     }
     case SET_USER_PROFILE: {
-     return {
-       ...state,
-       profile: action.profile
-     }
+      return {
+        ...state,
+        profile: action.profile
+      }
     }
     default:
       return state;
@@ -46,6 +48,13 @@ export const addPostActionCreator = () => ({type: ADD_POST}),
   }),
   setUserProfile = (profile) => ({
     type: SET_USER_PROFILE, profile
-  })
+  });
+
+
+export const getUserProfile = (userId) => (dispatch) => {
+  usersAPI.getProfile(userId).then(res => {
+    dispatch(setUserProfile(res.data));
+  });
+};
 
 export default profileReducer;
