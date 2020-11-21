@@ -1,5 +1,6 @@
 import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
+import Status from '../Status/Status';
 
 const Info = (props) => {
   if (!props.profile) {
@@ -13,6 +14,7 @@ const Info = (props) => {
       <div className="profile__avatar">
         <img src={props.profile.photos.small} alt="hot-girl"/>
       </div>
+      <Status status={'Hello my friends'}/>
     </div>
   )
 }
