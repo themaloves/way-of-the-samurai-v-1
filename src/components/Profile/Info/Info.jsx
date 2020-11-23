@@ -14,7 +14,8 @@ const Info = (props) => {
       <div className="profile__avatar">
         <img src={props.profile.photos.small} alt="hot-girl"/>
       </div>
-      <Status status={'Hello my friends'}/>
+      <Status status={props.status}
+              updateStatus={props.updateStatus}/>
     </div>
   )
 }
